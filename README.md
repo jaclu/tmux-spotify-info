@@ -1,3 +1,8 @@
+# My changes
+
+limited max output length - the default sometimes completely filled the status line if one of the reported fields were really long
+
+
 tmux-spotify-info
 =================
 
