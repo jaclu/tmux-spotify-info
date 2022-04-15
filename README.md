@@ -1,12 +1,12 @@
-# My changes
+# tmux-spotify-info
+
+Shows current song playing on spotify in your tmux statusline.
+
+## My changes
 
 limited max output length - the default sometimes completely filled the status line if one of the reported fields was really long.
 
 Original can be found at [https://github.com/jdxcode/tmux-spotify-info](https://github.com/jdxcode/tmux-spotify-info)
-
-# tmux-spotify-info
-
-Shows current song playing on spotify in your tmux statusline.
 
 ## Dependencies
 MacOS Only
