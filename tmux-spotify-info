@@ -1,23 +1,44 @@
 #!/usr/bin/env osascript
-# Returns the current playing song in Spotify for OSX
+(*
+
+  Copyright (c) 2021,2022: Jacob.Lundqvist@gmail.com
+  License: MIT
+
+  Part of https://github.com/jaclu/tmux-spotify-info
+
+  Version: 1.0.3  2022-04-16
+
+  Returns the current playing song in Spotify for OSX
+
+*)
+
+
+-- I often use a vertical screen so need to keep things short and
+-- skip the note prefix...
+set show_prefix to false
+
 
 tell application "Spotify"
   if it is running then
     if player state is playing then
       set track_name to name of current track
       set artist_name to artist of current track
-
+      set album_name to album of current track
       if artist_name > 0
-        # If the track has an artist set and is therefore most likely a song rather than an advert
-	#"♫ " & artist_name & " - " & track_name
+        -- If the track has an artist set and is therefore most likely a song
+        -- rather than an advert
 
-	# Assign original output to variable in order to manipulate it next
-	set s_out1 to "♫ " & artist_name & " - " & track_name
+        if show_prefix = true then
+          set s_out1 to "♫ " & artist_name & " - " & track_name & " - " & album_name
+        else
+          set s_out1 to artist_name & " - " & track_name & " - " & album_name
+        end if
 
-	# Limit size of output
-	do shell script "/usr/bin/cut -c 1-60 <<<" & quoted form of s_out1
+      	-- Limit size of output
+      	do shell script "/usr/bin/cut -c 1-60 <<<" & quoted form of s_out1
       else
-        # If the track doesn't have an artist set and is therefore most likely an advert rather than a song
+        -- If the track doesn't have an artist set and is therefore most likely
+        -- an advert rather than a song
         "~ " & track_name
       end if
     end if
