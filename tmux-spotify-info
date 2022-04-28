@@ -6,7 +6,7 @@
 
   Part of https://github.com/jaclu/tmux-spotify-info
 
-  Version: 1.0.3  2022-04-16
+  Version: 1.0.4  2022-04-28
 
   Returns the current playing song in Spotify for OSX
 
@@ -29,9 +29,9 @@ tell application "Spotify"
         -- rather than an advert
 
         if show_prefix = true then
-          set s_out1 to "♫ " & artist_name & " - " & track_name & " - " & album_name
+          set s_out1 to "♫ " & track_name & " - " & artist_name & " - " & album_name
         else
-          set s_out1 to artist_name & " - " & track_name & " - " & album_name
+          set s_out1 to track_name & " - " & artist_name & " - " & album_name
         end if
 
       	-- Limit size of output
